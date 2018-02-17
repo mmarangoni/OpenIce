@@ -23,6 +23,7 @@ Tap on a skate marker, then tap the info window to see detailed information for 
 ## Getting directions to a rink
 
 Touch a marker on the map, then tap the directions button to get directions to the rink location in Google Maps
+
 ![directions](https://github.com/mmarangoni/OpenIce/blob/master/images/directions.gif "Directions")
 
 ## Additional App Information
