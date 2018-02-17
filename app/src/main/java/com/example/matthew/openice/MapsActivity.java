@@ -54,7 +54,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private static final int TWO_MINUTES = 1000 * 60 * 2;
     /** Stores the information for each rink parsed from csv file */
     List<String[]> rinks;
-
+    /** Static variables **/
+    private static final int ID_IDX = 0;
+    private static final int ID_NAME = 2;
+    private static final int ID_SIZE = 4;
+    private static final int ID_LIT = 5;
+    private static final int ID_PADS = 6;
+    private static final int ID_DISTRICT = 7;
+    private static final int ID_WARD = 8;
+    private static final int ID_ADDRESS = 9;
+    private static final int ID_LONG = 10;
+    private static final int ID_LAT = 11;
+    private static final int ID_WASHROOM = 12;
+    private static final int ID_CHANGEROOM = 13;
+    private static final int ID_TRAIL = 14;
+    private static final int ID_RENTAL = 15;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,23 +170,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     /** Adds a marker for each rink location to the map */
     public void addMarkers() {
-        for(String s[] : rinks) {
+        for(String rink[] : rinks) {
             Double lng = 0.0;
             Double lat = 0.0;
             LatLng pos = null;
-            String rinkName = s[2];
-            String address = s[9];
+            String rinkName = rink[ID_NAME];
+            String address = rink[ID_ADDRESS];
             // if coordinates already exist, get the location
-            if (!s[10].isEmpty() && !s[11].isEmpty()) {
-                lng = parseDouble(s[10]);
-                lat = parseDouble(s[11]);
+            if (!rink[ID_LONG].isEmpty() && !rink[ID_LAT].isEmpty()) {
+                lng = parseDouble(rink[ID_LONG]);
+                lat = parseDouble(rink[ID_LAT]);
                 pos = new LatLng(lat, lng);
             }
             else {
                 // attempt to get coordinates from the address using Geocoder
                 try {
                     Geocoder geocoder = new Geocoder(this);
-                    String addressPlus = s[9] + ", Toronto";
+                    String addressPlus = rink[ID_ADDRESS] + ", Toronto";
                     List<Address> location = geocoder.getFromLocationName(addressPlus, 1);
                     lng = location.get(0).getLongitude();
                     lat = location.get(0).getLatitude();
@@ -202,22 +216,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onInfoWindowClick(Marker marker) {
                 // get the proper marker information
-                for (String s[] : rinks) {
-                    if(marker.getTitle().equals(s[2])) {
+                for (String rink[] : rinks) {
+                    if(marker.getTitle().equals(rink[ID_NAME])) {
                         Intent intent = new Intent(MapsActivity.this, DetailsActivity.class);
 
-                        intent.putExtra("rinkId", s[0]);
-                        intent.putExtra("rinkName", s[2]);
-                        intent.putExtra("rinkSize", s[4]);
-                        intent.putExtra("litArea", s[5]);
-                        intent.putExtra("numOfPads", s[6]);
-                        intent.putExtra("district", s[7]);
-                        intent.putExtra("ward", s[8]);
-                        intent.putExtra("address", s[9]);
-                        intent.putExtra("washroom", s[12]);
-                        intent.putExtra("changeroom", s[13]);
-                        intent.putExtra("skateTrail", s[14]);
-                        intent.putExtra("skateRental", s[15]);
+                        intent.putExtra("rinkId", rink[ID_IDX]);
+                        intent.putExtra("rinkName", rink[ID_NAME]);
+                        intent.putExtra("rinkSize", rink[ID_SIZE]);
+                        intent.putExtra("litArea", rink[ID_LIT]);
+                        intent.putExtra("numOfPads", rink[ID_PADS]);
+                        intent.putExtra("district", rink[ID_DISTRICT]);
+                        intent.putExtra("ward", rink[ID_WARD]);
+                        intent.putExtra("address", rink[ID_ADDRESS]);
+                        intent.putExtra("washroom", rink[ID_WASHROOM]);
+                        intent.putExtra("changeroom", rink[ID_CHANGEROOM]);
+                        intent.putExtra("skateTrail", rink[ID_TRAIL]);
+                        intent.putExtra("skateRental", rink[ID_RENTAL]);
 
                         startActivity(intent);
                     }
