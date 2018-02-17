@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Open Ice</string>
+    <string name="title_activity_maps">Open Ice</string>
+    <string name="title_activity_details">Rink Details</string>
+    <string name="app_help">Help</string>
+    <string name="app_about">About</string>
+    <string name="mapIconsLabel">Map Icons</string>
+    <string name="amenityIconsLabel">Amenity Icons</string>
+    <string name="usageLabel">Usage Information</string>
+    <string name="usageDesc">Click a skate icon to display a rink location. Click the info window to view additional information for that location. This app uses location information.</string>
+    <string name="skateDesc">If this icon is displayed, a public ice rink is available at this location.</string>
+    <string name="washroomDesc">Locations with this amenity provide public washrooms.</string>
+    <string name="changeroomDesc">Locations with this amenity provide public changerooms.</string>
+    <string name="skateTrailDesc">Locations with this amenity have a skate trail in addition to ice rink.</string>
+    <string name="skateRentalDesc">Locations with this amenity offer skate rental services.</string>
+    <string name="aboutLabel">About This Application</string>
+    <string name="about">This app provides information about public skating rinks and skate trails available in the City of Toronto. It uses an open data set provided by the city for the rink locations and details.</string>
+    <string name="author">&#169; 2018 Matthew Marangoni</string>
+    <string name="google_maps_key">insert-google-maps-api-key-here</string>
+</resources>
